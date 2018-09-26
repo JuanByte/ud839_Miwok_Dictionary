@@ -44,16 +44,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(numbersIntent);
             }
         });
+        //Find the View that shows the family category
+        TextView familyNumbers = findViewById(R.id.family);
+        // Set a clickListener on that View
+        familyNumbers.setOnClickListener(new View.OnClickListener() {
+            // the code in this method will be executed when the numbers View is clicked on.
+            @Override
+            public void onClick(View view) {
+                Intent familyIntent = new Intent(MainActivity.this, FamilyMembers.class);
+                startActivity(familyIntent);
+            }
+        });
+
+
         }
 
-//    public void openNumbersList(View view){
-//        Intent intentNumbers = new Intent(MainActivity.this, NumbersActivity.class);
-//        startActivity(intentNumbers);
-//    }
-    public void openFamilyList(View view){
-        Intent intentFamily = new Intent(MainActivity.this, FamilyMembers.class);
-        startActivity(intentFamily);
-    }
+
     public void openPhrasesList(View view){
         Intent intentPhrases = new Intent(MainActivity.this, Phrases.class);
         startActivity(intentPhrases);

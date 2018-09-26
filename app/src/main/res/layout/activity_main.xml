@@ -34,7 +34,7 @@
         style="@style/CategoryStyle"
         android:background="@color/category_family"
         android:text="@string/category_family"
-        android:onClick="openFamilyList"/>
+        />
 
     <TextView
         android:id="@+id/colors"

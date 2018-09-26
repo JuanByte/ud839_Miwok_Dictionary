@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 package com.example.android.miwok;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -55,17 +56,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(familyIntent);
             }
         });
+        //Find the View that shows the colors category
+        final TextView colors = findViewById(R.id.colors);
+        // Set a clickListener on that View
+        colors.setOnClickListener(new View.OnClickListener() {
+            // the code in this method will be executed when the numbers View is clicked on.
+            @Override
+            public void onClick(View view) {
+                Intent colorsIntent = new Intent(MainActivity.this, Colors.class);
+                startActivity(colorsIntent);
+            }
+        });
+    }
 
-
-        }
-
-
-    public void openPhrasesList(View view){
+    public void openPhrasesList(View view) {
         Intent intentPhrases = new Intent(MainActivity.this, Phrases.class);
         startActivity(intentPhrases);
     }
-    public void openColorsList(View view){
-        Intent intentColors = new Intent(MainActivity.this, Colors.class);
-        startActivity(intentColors);
-    }
 }
+

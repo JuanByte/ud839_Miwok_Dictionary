@@ -31,17 +31,14 @@ public class NumbersActivity extends AppCompatActivity {
         // rootView linear layout.
         LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
         //create a variable to keep track of the current index position.
-        int index = 0;
         //keep looping until we reach the end of the list
-        while (index < words.size()) {
+        for (int i = 0; i < words.size(); i++) {
             //create a new text view
             TextView wordView = new TextView(this);
             //set text to be word at the current position
-            wordView.setText(words.get(index));
+            wordView.setText(words.get(i));
             //add this text view as another child to the root view of this layout
             rootView.addView(wordView);
-            //increment index by 1
-            index++;
         }
     }
 }

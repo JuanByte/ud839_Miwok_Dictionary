@@ -33,7 +33,7 @@ public class NumbersActivity extends AppCompatActivity {
         //simple_list_item_1.xml layout resource defined in the Android framework.
         //This list item layout contains a single{@link TextView}, which the adapter will
         //set to display a single word.
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(NumbersActivity.this, android.R.layout.simple_list_item_1, words);
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(NumbersActivity.this, android.R.layout.list_content, words);
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // activity_numbers.xml layout file.

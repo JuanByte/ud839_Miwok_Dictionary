@@ -57,21 +57,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Find the View that shows the colors category
-        final TextView colors = findViewById(R.id.colors);
+        TextView colors = findViewById(R.id.colors);
         // Set a clickListener on that View
         colors.setOnClickListener(new View.OnClickListener() {
-            // the code in this method will be executed when the colors View is clicked on.
+            // the code in this method will be executed when the numbers View is clicked on.
             @Override
             public void onClick(View view) {
                 Intent colorsIntent = new Intent(MainActivity.this, Colors.class);
                 startActivity(colorsIntent);
             }
         });
-        //Find the View that shows the Phrases category
-        final TextView Phrases = findViewById(R.id.phrases);
+        //Find the View that shows the phrases category
+        TextView phrases = findViewById(R.id.phrases);
         // Set a clickListener on that View
         colors.setOnClickListener(new View.OnClickListener() {
-            // the code in this method will be executed when the phrases view is clicked on.
+            // the code in this method will be executed when the numbers View is clicked on.
             @Override
             public void onClick(View view) {
                 Intent phrasesIntent = new Intent(MainActivity.this, Phrases.class);
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+          }
     }
 
 

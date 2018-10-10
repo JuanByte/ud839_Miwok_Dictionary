@@ -30,6 +30,11 @@ public class Word {
     private String mMiwokTranslation;
 
     /**
+     * Resource ID to retrieve image from our Drawable folder
+     */
+    private int mImageResourceID;
+
+    /**
      * Create a new Word object.
      *
      * @param defaultTranslation is the word in a language that the user is already familiar with
@@ -39,6 +44,20 @@ public class Word {
     public Word(String defaultTranslation, String miwokTranslation) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+    }
+    /**
+     * Create a new Word object.
+     *
+     * @param defaultTranslation is the word in a language that the user is already familiar with
+     *                           (such as English)
+     * @param miwokTranslation   is the word in the Miwok language
+     *
+     * @param mImageResourceID Id of the image that represent the word
+     */
+    public Word(String defaultTranslation, String miwokTranslation, int mImageResourceID) {
+        mDefaultTranslation = defaultTranslation;
+        mMiwokTranslation = miwokTranslation;
+        mImageResourceID = mImageResourceID;
     }
 
     /**
@@ -55,4 +74,12 @@ public class Word {
         return mMiwokTranslation;
     }
 
+    /**
+     * Get the image resource ID
+     *
+     * @return
+     */
+    public int getimageResourceID() {
+        return mImageResourceID;
+    }
 }

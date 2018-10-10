@@ -14,16 +14,16 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
         //Create list of words
         ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("one", "lutti"));
-        words.add(new Word("two", "otiiko"));
-        words.add(new Word("three", "tolookosu"));
-        words.add(new Word("four", "oyyisa"));
-        words.add(new Word("five", "massokka"));
-        words.add(new Word("six", "massokka"));
-        words.add(new Word("seven", "temmokka"));
-        words.add(new Word("eight", "kenekaku"));
-        words.add(new Word("night", "wo'e"));
-        words.add(new Word("ten", "na'aacha"));
+        words.add(new Word("one", "lutti", R.drawable.number_one));
+        words.add(new Word("two", "otiiko", R.drawable.number_two));
+        words.add(new Word("three", "tolookosu", R.drawable.number_three));
+        words.add(new Word("four", "oyyisa", R.drawable.number_four));
+        words.add(new Word("five", "massokka", R.drawable.number_five));
+        words.add(new Word("six", "massokka", R.drawable.number_six));
+        words.add(new Word("seven", "temmokka", R.drawable.number_seven));
+        words.add(new Word("eight", "kenekaku", R.drawable.number_eight));
+        words.add(new Word("night", "wo'e", R.drawable.number_nine));
+        words.add(new Word("ten", "na'aacha", R.drawable.number_ten));
         //Create an {@link ArrayAdapter}, whose data source is a list of String.
         //adapter knows how to create layouts for each item in this list, using the
         //simple_list_item_1.xml layout resource defined in the Android framework.

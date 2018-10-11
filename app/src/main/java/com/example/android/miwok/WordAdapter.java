@@ -1,5 +1,4 @@
 package com.example.android.miwok;
-
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import java.util.ArrayList;
+import android.widget.ImageView;
 // we specified that we expect a Word object on the Array Adapter wich <Word>
 public class WordAdapter extends ArrayAdapter<Word> {
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
@@ -59,6 +59,10 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // Get the default translation from the current Word object and
         // set this text on the name TextView
         defaultTextView.setText(currentWord.getDefaultTranslation());
+        // Find the ImageView in the list_item.xml layout with the ID image.
+        ImageView imageView = (ImageView) listItemView.findViewById(R.id.miwok_image_view);
+        // Set the ImageView to the image resource specified in the current Word
+        imageView.setImageResource(currentWord.getImageResourceID());
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView
         return listItemView;

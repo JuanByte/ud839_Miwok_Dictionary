@@ -20,7 +20,6 @@
         android:id="@+id/text_container"
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_item_height"
-        android:background="@color/category_numbers"
         android:gravity="center_vertical"
         android:orientation="vertical">
 

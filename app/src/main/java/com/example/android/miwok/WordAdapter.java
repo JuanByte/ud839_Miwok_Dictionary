@@ -24,6 +24,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
      *
      * @param context        The current context. Used to inflate the layout file.
      * @param words A List of Word objects to display in a list
+     * @param colorResourceId color of the verticalLayout of words
      */
     public WordAdapter(Activity context, ArrayList<Word> words, int colorResourceId) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.

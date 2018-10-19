@@ -17,16 +17,16 @@ public class FamilyMembers extends AppCompatActivity {
         setContentView(R.layout.word_list);
         //Create list of words
         ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("father", "әpә", R.drawable.family_father));
-        words.add(new Word("mother", "әṭa", R.drawable.family_mother));
-        words.add(new Word("son", "angsi", R.drawable.family_son));
-        words.add(new Word("daughter", "tune", R.drawable.family_daughter));
-        words.add(new Word("older brother", "taachi", R.drawable.family_older_brother));
-        words.add(new Word("younger brother", "chalitti", R.drawable.family_younger_brother));
-        words.add(new Word("older sister", "teṭe", R.drawable.family_older_sister));
-        words.add(new Word("younger sister", "kolliti", R.drawable.family_younger_sister));
-        words.add(new Word("grandmother", "ama", R.drawable.family_grandmother));
-        words.add(new Word("grandfather", "paapa", R.drawable.family_grandfather));
+        words.add(new Word("father", "әpә", R.drawable.family_father, R.raw.number_one));
+        words.add(new Word("mother", "әṭa", R.drawable.family_mother, R.raw.number_one));
+        words.add(new Word("son", "angsi", R.drawable.family_son, R.raw.number_one));
+        words.add(new Word("daughter", "tune", R.drawable.family_daughter, R.raw.number_one));
+        words.add(new Word("older brother", "taachi", R.drawable.family_older_brother, R.raw.number_one));
+        words.add(new Word("younger brother", "chalitti", R.drawable.family_younger_brother, R.raw.number_one));
+        words.add(new Word("older sister", "teṭe", R.drawable.family_older_sister, R.raw.number_one));
+        words.add(new Word("younger sister", "kolliti", R.drawable.family_younger_sister, R.raw.number_one));
+        words.add(new Word("grandmother", "ama", R.drawable.family_grandmother, R.raw.number_one));
+        words.add(new Word("grandfather", "paapa", R.drawable.family_grandfather, R.raw.number_one));
         //Create an {@link ArrayAdapter}, whose data source is a list of String.
         //adapter knows how to create layouts for each item in this list, using the
         //simple_list_item_1.xml layout resource defined in the Android framework.

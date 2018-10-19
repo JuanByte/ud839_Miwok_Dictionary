@@ -28,13 +28,14 @@ public class Word {
      * Miwok translation for the word
      */
     private String mMiwokTranslation;
-
     /**
      * Resource ID to retrieve image from our Drawable folder
      */
     private int mImageResourceID= NO_IMAGE_PROVIDED;
     /** Constant value that represents no image was provided for this word */
     private static final int NO_IMAGE_PROVIDED = -1;
+    /** Resource ID to retrieve audio form our raw folder*/
+    private int mAudioResourceId;
     /**
      * Create a new Word object.
      *
@@ -42,9 +43,10 @@ public class Word {
      *                           (such as English)
      * @param miwokTranslation   is the word in the Miwok language
      */
-    public Word(String defaultTranslation, String miwokTranslation) {
+    public Word(String defaultTranslation, String miwokTranslation, int mAudioResourceId) {
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
+        this.mAudioResourceId = mAudioResourceId;
     }
     /**
      * Create a new Word object.
@@ -55,10 +57,11 @@ public class Word {
      *
      * @param mImageResourceID Id of the image that represent the word
      */
-    public Word(String defaultTranslation, String miwokTranslation, int mImageResourceID) {
+    public Word(String defaultTranslation, String miwokTranslation, int mImageResourceID, int mAudioResourceId) {
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
         this.mImageResourceID = mImageResourceID;
+        this.mAudioResourceId = mAudioResourceId;
     }
 
     /**
@@ -87,4 +90,10 @@ public class Word {
      * Returns whether or not there is an image for this word.
      */
     public boolean hasImage() { return mImageResourceID != NO_IMAGE_PROVIDED; }
+
+    /**
+     * Returns the audio resource id  related to the current word
+     * @return
+     */
+    public int getmAudioResourceId(){ return mAudioResourceId; }
 }

@@ -34,6 +34,9 @@ public class Word {
     private int mImageResourceID= NO_IMAGE_PROVIDED;
     /** Constant value that represents no image was provided for this word */
     private static final int NO_IMAGE_PROVIDED = -1;
+
+
+
     /** Resource ID to retrieve audio form our raw folder*/
     private int mAudioResourceId;
     /**
@@ -95,5 +98,8 @@ public class Word {
      * Returns the audio resource id  related to the current word
      * @return
      */
-    public int getmAudioResourceId(){ return mAudioResourceId; }
+    public int getmAudioResourceId() {
+        return mAudioResourceId;
+    }
+
 }

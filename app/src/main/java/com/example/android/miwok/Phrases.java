@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -89,5 +90,15 @@ public class Phrases extends AppCompatActivity {
             // is not configured to play an audio file at the moment.
             mediaPlayer = null;
         }
+    }
+
+    /**
+     * Realise media resources player whenever the user leaves the activity
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v("MainActivity", "Activity has Stopped");
+        releaseMediaPlayer();
     }
 }

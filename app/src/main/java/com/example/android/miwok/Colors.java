@@ -92,5 +92,15 @@ public class Colors extends AppCompatActivity {
         }
     }
 
+    /**
+     * Realise media resources player whenever the user leaves the activity
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v("MainActivity", "Activity has Stopped");
+        releaseMediaPlayer();
+    }
+
 }
 

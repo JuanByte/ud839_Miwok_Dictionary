@@ -1,5 +1,6 @@
 package com.example.android.miwok;
 
+import android.app.Activity;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -93,4 +94,13 @@ public class NumbersActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Realise media player resources whenever the user leaves the activity
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v("MainActivity", "Activity has Stopped");
+        releaseMediaPlayer();
+    }
 }

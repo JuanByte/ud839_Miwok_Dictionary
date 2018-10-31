@@ -16,8 +16,8 @@ import java.util.ArrayList;
 public class NumbersActivity extends AppCompatActivity {
     //Handle all audio play
     private MediaPlayer mediaPlayer;
-    // Handle AudioManager and create and instance of it.
-    AudioManager mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+    // Handle AudioManager
+    AudioManager mAudioManager;
     // Audio manager listener
     AudioManager.OnAudioFocusChangeListener audioFocusChangeListener= new AudioManager.OnAudioFocusChangeListener() {
         @Override

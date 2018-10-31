@@ -28,7 +28,6 @@ public class Colors extends AppCompatActivity {
             releaseMediaPlayer();
         }
     };
-
     // Handle AudioManager
     AudioManager mAudioManager;
     // Audio manager listener
@@ -96,6 +95,7 @@ public class Colors extends AppCompatActivity {
                 releaseMediaPlayer();
                 // Get the current word position
                 Word word = words.get(position);
+                //Request audio Focus for playback
                 final int aFrequest = mAudioManager.requestAudioFocus(audioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
                 if (aFrequest == AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
                     // Create a media player object with the corresponding audio file

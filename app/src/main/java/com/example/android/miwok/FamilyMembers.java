@@ -1,5 +1,7 @@
 package com.example.android.miwok;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
@@ -27,10 +29,37 @@ public class FamilyMembers extends AppCompatActivity {
             releaseMediaPlayer();
         }
     };
+    // Handle AudioManager
+    AudioManager mAudioManager;
+    // Audio manager listener
+    AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            switch (focusChange) {
+                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+                    // we pause our audio and set it from the beginning
+                    mediaPlayer.pause();
+                    mediaPlayer.seekTo(0);
+                    break;
+                case AudioManager.AUDIOFOCUS_LOSS:
+                    // release all media player resources and audio focus
+                    releaseMediaPlayer();
+                    break;
+                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+                    mediaPlayer.pause();
+                    mediaPlayer.seekTo(0);
+                    break;
+                case AudioManager.AUDIOFOCUS_GAIN:
+                    mediaPlayer.start();
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
+        // Create an instance of AudioManager to manage audio focus
+        mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
         //Create list of words
         final ArrayList<Word> words = new ArrayList<>();
         words.add(new Word("father", "әpә", R.drawable.family_father, R.raw.family_father));
@@ -68,13 +97,16 @@ public class FamilyMembers extends AppCompatActivity {
                 releaseMediaPlayer();
                 // Get the current word position
                 Word word = words.get(position);
-                // Create a media player object with the corresponding audio file
-                mediaPlayer = MediaPlayer.create(FamilyMembers.this, word.getmAudioResourceId());
-                // Play the audio for the corresponding word
-                mediaPlayer.start();
-                // Setup a listener on the media player, so that we can stop and release the
-                // media player once the sound has finished playing.
-                mediaPlayer.setOnCompletionListener(onCompletionListener);
+                //Request audio Focus for playback
+                final int aFrequest = mAudioManager.requestAudioFocus(audioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+                if (aFrequest == AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
+                    // Create a media player object with the corresponding audio file
+                    mediaPlayer = MediaPlayer.create(FamilyMembers.this, word.getmAudioResourceId());
+                    // Play the audio for the corresponding word
+                    mediaPlayer.start();
+                    // Setup a listener on the media player, so that we can stop and release the
+                    // media player once the sound has finished playing.
+                    mediaPlayer.setOnCompletionListener(onCompletionListener);}
             }
         });
     }
@@ -91,6 +123,9 @@ public class FamilyMembers extends AppCompatActivity {
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
             mediaPlayer = null;
+            // Release audio focus regardless of whether or not we were granted audio focus. This
+            //also unregister the AudioFocusChangeListener so we don't get any more callbacks.
+            mAudioManager.abandonAudioFocus(audioFocusChangeListener);
         }
     }
 

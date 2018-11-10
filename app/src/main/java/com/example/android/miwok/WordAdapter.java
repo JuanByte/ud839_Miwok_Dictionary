@@ -1,23 +1,16 @@
 package com.example.android.miwok;
 
 import android.app.Activity;
-import android.content.Context;
-import android.media.MediaPlayer;
 import android.support.v4.content.ContextCompat;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
 import android.widget.ImageView;
-import android.widget.Toast;
 
 // we specified that we expect a Word object on the Array Adapter wich <Word>
 public class WordAdapter extends ArrayAdapter<Word> {
@@ -32,9 +25,6 @@ public class WordAdapter extends ArrayAdapter<Word> {
      * The context is used to inflate the layout file, and the list is the data we want
      * to populate into the lists.
      *
-     * @param context         The current context. Used to inflate the layout file.
-     * @param words           A List of Word objects to display in a list
-     * @param colorResourceId color of the verticalLayout of words
      */
     public WordAdapter(Activity context, ArrayList<Word> words, int colorResourceId) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
@@ -44,6 +34,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         super(context, 0, words);
         this.mColorResourceId = colorResourceId;
     }
+
 
     /**
      * Provides a view for an AdapterView (ListView, GridView, etc.)

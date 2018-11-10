@@ -20,7 +20,7 @@ public class Phrases extends AppCompatActivity {
         setContentView(R.layout.activity_category);
         //relate Colors fragment with activity_category layout and this Color Activity as its
         //container
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new ColorsFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new PhrasesFragment()).commit();
     }
 
 }

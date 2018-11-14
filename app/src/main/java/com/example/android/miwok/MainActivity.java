@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         // Find the viewPager in the activity_main.xml layout file
         ViewPager viewPager = findViewById(R.id.view_pager);
         // Create a new instance of your custom Pager Adapter
-        CategoriesPagerAdapter categoriesPagerAdapter = new CategoriesPagerAdapter(getSupportFragmentManager());
+        CategoriesPagerAdapter categoriesPagerAdapter = new CategoriesPagerAdapter(this, getSupportFragmentManager());
         // Set the adapter into the view pager
         viewPager.setAdapter(categoriesPagerAdapter);
         // Give the TabLayout the ViewPager

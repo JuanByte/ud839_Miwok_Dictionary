@@ -1,10 +1,14 @@
 package com.example.android.miwok;
 
+import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 public class CategoriesPagerAdapter extends FragmentPagerAdapter {
+    final int PAGE_COUNT = 4;
+    private String tabTitles[] = new String[] { "Numbers", "Family", "Colors", "Phrases"};
 
     public CategoriesPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -34,6 +38,13 @@ public class CategoriesPagerAdapter extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 4;
+        return PAGE_COUNT;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return tabTitles[position];
+
     }
 }

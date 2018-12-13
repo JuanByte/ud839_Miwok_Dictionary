@@ -1,40 +1,34 @@
 package com.example.android.miwok;
 
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Colors extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class PhrasesFragment extends Fragment {
     //Handle all audio play
     MediaPlayer mediaPlayer;
-    /**
-     * This listener gets triggered when the {@link MediaPlayer} has completed
-     * playing the audio file.
-     */
-    private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mp) {
-            releaseMediaPlayer();
-        }
-    };
     // Handle AudioManager
     AudioManager mAudioManager;
     // Audio manager listener
-    AudioManager.OnAudioFocusChangeListener audioFocusChangeListener= new AudioManager.OnAudioFocusChangeListener() {
+    AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
         @Override
         public void onAudioFocusChange(int focusChange) {
-            switch (focusChange){
+            switch (focusChange) {
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
                     // we pause our audio and set it from the beginning
                     mediaPlayer.pause();
@@ -53,33 +47,51 @@ public class Colors extends AppCompatActivity {
             }
         }
     };
+    /**
+     * This listener gets triggered when the {@link MediaPlayer} has completed
+     * playing the audio file.
+     */
+    private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            releaseMediaPlayer();
+        }
+    };
+
+
+    public PhrasesFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
         // Create an instance of AudioManager to manage audio focus
-        mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         //Create list of words
         final ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("red", "weṭeṭṭi", R.drawable.color_red, R.raw.color_red));
-        words.add(new Word("green", "chokokki", R.drawable.color_green, R.raw.color_green));
-        words.add(new Word("brown", "ṭakaakki", R.drawable.color_brown, R.raw.color_brown));
-        words.add(new Word("gray", "ṭopoppi", R.drawable.color_gray, R.raw.color_gray));
-        words.add(new Word("black", "kululli", R.drawable.color_black, R.raw.color_black));
-        words.add(new Word("white", "kelelli", R.drawable.color_white, R.raw.color_white));
-        words.add(new Word("dusty yellow", "ṭopiisә", R.drawable.color_dusty_yellow, R.raw.color_dusty_yellow));
-        words.add(new Word("mustard yellow", "chiwiiṭә", R.drawable.color_mustard_yellow, R.raw.color_mustard_yellow));
+        words.add(new Word(R.string.where_are_you_going, R.string.minto_wuksus, R.raw.phrase_where_are_you_going));
+        words.add(new Word(R.string.what_is_your_name, R.string.tinnә_oyaase_nә, R.raw.phrase_what_is_your_name));
+        words.add(new Word(R.string.my_name_is, R.string.oyaaset, R.raw.phrase_my_name_is));
+        words.add(new Word(R.string.how_are_you_feeling, R.string.michәksәs, R.raw.phrase_how_are_you_feeling));
+        words.add(new Word(R.string.im_feeling_good, R.string.kuchi_achit, R.raw.phrase_im_feeling_good));
+        words.add(new Word(R.string.are_you_coming, R.string.eenesaa, R.raw.phrase_are_you_coming));
+        words.add(new Word(R.string.yes_im_coming, R.string.hee_eenem, R.raw.phrase_yes_im_coming));
+        words.add(new Word(R.string.im_coming, R.string.eenem, R.raw.phrase_im_coming));
+        words.add(new Word(R.string.lets_go, R.string.yoowutis, R.raw.phrase_lets_go));
+        words.add(new Word(R.string.come_here, R.string.enni_nem, R.raw.phrase_come_here));
         //Create an {@link ArrayAdapter}, whose data source is a list of String.
         //adapter knows how to create layouts for each item in this list, using the
         //simple_list_item_1.xml layout resource defined in the Android framework.
         //This list item layout contains a single{@link TextView}, which the adapter will
         //set to display a single word.
-        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_colors);
+        WordAdapter itemsAdapter = new WordAdapter(getActivity(), words, R.color.category_phrases);
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // word_list.xml file.
-        ListView listView = (ListView) findViewById(R.id.list);
+        // word_listyout file.
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
         // Make the {@link ListView} use the {@link ArrayAdapter} we created above, so that the
         // {@link ListView} will display list items for each word in the list of words.
         // Do this by calling the setAdapter method on the {@link ListView} object and pass in
@@ -97,17 +109,20 @@ public class Colors extends AppCompatActivity {
                 Word word = words.get(position);
                 //Request audio Focus for playback
                 final int aFrequest = mAudioManager.requestAudioFocus(audioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
-                if (aFrequest == AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
+                if (aFrequest == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     // Create a media player object with the corresponding audio file
-                    mediaPlayer = MediaPlayer.create(Colors.this, word.getmAudioResourceId());
+                    mediaPlayer = MediaPlayer.create(getActivity(), word.getmAudioResourceId());
                     // Play the audio for the corresponding word
                     mediaPlayer.start();
                     // Setup a listener on the media player, so that we can stop and release the
                     // media player once the sound has finished playing.
-                    mediaPlayer.setOnCompletionListener(onCompletionListener);}
+                    mediaPlayer.setOnCompletionListener(onCompletionListener);
+                }
             }
         });
+        return rootView;
     }
+
     /**
      * Clean up the media player by releasing its resources.
      */
@@ -131,11 +146,11 @@ public class Colors extends AppCompatActivity {
      * Realise media resources player whenever the user leaves the activity
      */
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         Log.v("MainActivity", "Activity has Stopped");
         releaseMediaPlayer();
     }
 
-}
 
+}

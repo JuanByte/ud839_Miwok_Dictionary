@@ -1,20 +1,38 @@
 package com.example.android.miwok;
 
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class Phrases extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class FamilyFragment extends Fragment {
     //Handle all audio play
     MediaPlayer mediaPlayer;
+
+    /**
+     * This listener gets triggered when the {@link MediaPlayer} has completed
+     * playing the audio file.
+     */
+    private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            releaseMediaPlayer();
+        }
+    };
     // Handle AudioManager
     AudioManager mAudioManager;
     // Audio manager listener
@@ -40,45 +58,42 @@ public class Phrases extends AppCompatActivity {
             }
         }
     };
-    /**
-     * This listener gets triggered when the {@link MediaPlayer} has completed
-     * playing the audio file.
-     */
-    private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mp) {
-            releaseMediaPlayer();
-        }
-    };
+
+
+    public FamilyFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // inflate the word list layout
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
         // Create an instance of AudioManager to manage audio focus
-        mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         //Create list of words
         final ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("Where are you going", "minto wuksus", R.raw.phrase_where_are_you_going));
-        words.add(new Word("What is your name?", "tinnә oyaase'nә", R.raw.phrase_what_is_your_name));
-        words.add(new Word("My name is...", "oyaaset...", R.raw.phrase_my_name_is));
-        words.add(new Word("How are you feeling?", "michәksәs", R.raw.phrase_how_are_you_feeling));
-        words.add(new Word("I’m feeling good.", "kuchi achit", R.raw.phrase_im_feeling_good));
-        words.add(new Word("Are you coming?", "әәnәs'aa?", R.raw.phrase_are_you_coming));
-        words.add(new Word("Yes, I'm coming", "hәә’ әәnәm", R.raw.phrase_yes_im_coming));
-        words.add(new Word("I’m coming.", "әәnәm", R.raw.phrase_im_coming));
-        words.add(new Word("Let’s go.", "yoowutis", R.raw.phrase_lets_go));
-        words.add(new Word("Come here.", "әnni'nem", R.raw.phrase_come_here));
+        words.add(new Word(R.string.father, R.string.әpә, R.drawable.family_father, R.raw.family_father));
+        words.add(new Word(R.string.mother, R.string.eta, R.drawable.family_mother, R.raw.family_mother));
+        words.add(new Word(R.string.son, R.string.angsi, R.drawable.family_son, R.raw.family_son));
+        words.add(new Word(R.string.daughter, R.string.tune, R.drawable.family_daughter, R.raw.family_daughter));
+        words.add(new Word(R.string.older_brother, R.string.taachi, R.drawable.family_older_brother, R.raw.family_older_brother));
+        words.add(new Word(R.string.younger_brother, R.string.chalitti, R.drawable.family_younger_brother, R.raw.family_younger_brother));
+        words.add(new Word(R.string.older_sister, R.string.teṭe, R.drawable.family_older_sister, R.raw.family_older_sister));
+        words.add(new Word(R.string.younger_sister, R.string.kolliti, R.drawable.family_younger_sister, R.raw.family_younger_sister));
+        words.add(new Word(R.string.ama, R.string.ama, R.drawable.family_grandmother, R.raw.family_grandmother));
+        words.add(new Word(R.string.paapa, R.string.paapa, R.drawable.family_grandfather, R.raw.family_grandfather));
         //Create an {@link ArrayAdapter}, whose data source is a list of String.
         //adapter knows how to create layouts for each item in this list, using the
         //simple_list_item_1.xml layout resource defined in the Android framework.
         //This list item layout contains a single{@link TextView}, which the adapter will
         //set to display a single word.
-        WordAdapter itemsAdapter = new WordAdapter(this, words, R.color.category_phrases);
+        WordAdapter itemsAdapter = new WordAdapter(getActivity(), words, R.color.category_family);
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // word_listyout file.
-        ListView listView = (ListView) findViewById(R.id.list);
+        // word_list.xml file.
+        ListView listView = (ListView) rootView.findViewById(R.id.list);
         // Make the {@link ListView} use the {@link ArrayAdapter} we created above, so that the
         // {@link ListView} will display list items for each word in the list of words.
         // Do this by calling the setAdapter method on the {@link ListView} object and pass in
@@ -96,16 +111,19 @@ public class Phrases extends AppCompatActivity {
                 Word word = words.get(position);
                 //Request audio Focus for playback
                 final int aFrequest = mAudioManager.requestAudioFocus(audioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
-                if (aFrequest == AudioManager.AUDIOFOCUS_REQUEST_GRANTED){
+                if (aFrequest == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     // Create a media player object with the corresponding audio file
-                    mediaPlayer = MediaPlayer.create(Phrases.this, word.getmAudioResourceId());
+                    mediaPlayer = MediaPlayer.create(getActivity(), word.getmAudioResourceId());
                     // Play the audio for the corresponding word
                     mediaPlayer.start();
                     // Setup a listener on the media player, so that we can stop and release the
                     // media player once the sound has finished playing.
-                    mediaPlayer.setOnCompletionListener(onCompletionListener);}
+                    mediaPlayer.setOnCompletionListener(onCompletionListener);
+                }
             }
         });
+
+        return rootView;
     }
 
     /**
@@ -131,9 +149,10 @@ public class Phrases extends AppCompatActivity {
      * Realise media resources player whenever the user leaves the activity
      */
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         Log.v("MainActivity", "Activity has Stopped");
         releaseMediaPlayer();
     }
+
 }

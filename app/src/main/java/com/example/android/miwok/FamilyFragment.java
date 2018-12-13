@@ -74,16 +74,16 @@ public class FamilyFragment extends Fragment {
         mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         //Create list of words
         final ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("father", "әpә", R.drawable.family_father, R.raw.family_father));
-        words.add(new Word("mother", "әṭa", R.drawable.family_mother, R.raw.family_mother));
-        words.add(new Word("son", "angsi", R.drawable.family_son, R.raw.family_son));
-        words.add(new Word("daughter", "tune", R.drawable.family_daughter, R.raw.family_daughter));
-        words.add(new Word("older brother", "taachi", R.drawable.family_older_brother, R.raw.family_older_brother));
-        words.add(new Word("younger brother", "chalitti", R.drawable.family_younger_brother, R.raw.family_younger_brother));
-        words.add(new Word("older sister", "teṭe", R.drawable.family_older_sister, R.raw.family_older_sister));
-        words.add(new Word("younger sister", "kolliti", R.drawable.family_younger_sister, R.raw.family_younger_sister));
-        words.add(new Word("grandmother", "ama", R.drawable.family_grandmother, R.raw.family_grandmother));
-        words.add(new Word("grandfather", "paapa", R.drawable.family_grandfather, R.raw.family_grandfather));
+        words.add(new Word(R.string.father, R.string.әpә, R.drawable.family_father, R.raw.family_father));
+        words.add(new Word(R.string.mother, R.string.eta, R.drawable.family_mother, R.raw.family_mother));
+        words.add(new Word(R.string.son, R.string.angsi, R.drawable.family_son, R.raw.family_son));
+        words.add(new Word(R.string.daughter, R.string.tune, R.drawable.family_daughter, R.raw.family_daughter));
+        words.add(new Word(R.string.older_brother, R.string.taachi, R.drawable.family_older_brother, R.raw.family_older_brother));
+        words.add(new Word(R.string.younger_brother, R.string.chalitti, R.drawable.family_younger_brother, R.raw.family_younger_brother));
+        words.add(new Word(R.string.older_sister, R.string.teṭe, R.drawable.family_older_sister, R.raw.family_older_sister));
+        words.add(new Word(R.string.younger_sister, R.string.kolliti, R.drawable.family_younger_sister, R.raw.family_younger_sister));
+        words.add(new Word(R.string.ama, R.string.ama, R.drawable.family_grandmother, R.raw.family_grandmother));
+        words.add(new Word(R.string.paapa, R.string.paapa, R.drawable.family_grandfather, R.raw.family_grandfather));
         //Create an {@link ArrayAdapter}, whose data source is a list of String.
         //adapter knows how to create layouts for each item in this list, using the
         //simple_list_item_1.xml layout resource defined in the Android framework.

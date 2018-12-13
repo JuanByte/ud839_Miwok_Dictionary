@@ -27,11 +27,11 @@ public class Word {
     /**
      * Default translation for the word
      */
-    private String mDefaultTranslation;
+    private int mDefaultTranslation;
     /**
      * Miwok translation for the word
      */
-    private String mMiwokTranslation;
+    private int mMiwokTranslation;
     /**
      * Resource ID to retrieve image from our Drawable folder
      */
@@ -48,7 +48,7 @@ public class Word {
      *                           (such as English)
      * @param miwokTranslation   is the word in the Miwok language
      */
-    public Word(String defaultTranslation, String miwokTranslation, int mAudioResourceId) {
+    public Word(int defaultTranslation, int miwokTranslation, int mAudioResourceId) {
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
         this.mAudioResourceId = mAudioResourceId;
@@ -62,7 +62,7 @@ public class Word {
      * @param miwokTranslation   is the word in the Miwok language
      * @param mImageResourceID   Id of the image that represent the word
      */
-    public Word(String defaultTranslation, String miwokTranslation, int mImageResourceID, int mAudioResourceId) {
+    public Word(int defaultTranslation, int miwokTranslation, int mImageResourceID, int mAudioResourceId) {
         this.mDefaultTranslation = defaultTranslation;
         this.mMiwokTranslation = miwokTranslation;
         this.mImageResourceID = mImageResourceID;
@@ -72,14 +72,14 @@ public class Word {
     /**
      * Get the default translation of the word.
      */
-    public String getDefaultTranslation() {
+    public int getDefaultTranslation() {
         return mDefaultTranslation;
     }
 
     /**
      * Get the Miwok translation of the word.
      */
-    public String getMiwokTranslation() {
+    public int getMiwokTranslation() {
         return mMiwokTranslation;
     }
 

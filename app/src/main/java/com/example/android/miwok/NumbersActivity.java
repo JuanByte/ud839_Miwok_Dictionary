@@ -9,7 +9,7 @@ public class NumbersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        //relate Colors fragment with activity_category layout and this Color Activity as its
+        //relate ColorsActivity fragment with activity_category layout and this Color Activity as its
         //container
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, new NumbersFragment())

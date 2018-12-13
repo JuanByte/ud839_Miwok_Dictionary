@@ -12,17 +12,15 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class FamilyMembers extends AppCompatActivity {
+public class PhrasesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        //relate Colors fragment with activity_category layout and this Color Activity as its
+        //relate ColorsActivity fragment with activity_category layout and this Color Activity as its
         //container
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new FamilyFragment()).commit();
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new PhrasesFragment()).commit();
     }
-
 
 }

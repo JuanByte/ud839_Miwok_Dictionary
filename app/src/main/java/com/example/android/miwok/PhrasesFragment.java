@@ -72,16 +72,16 @@ public class PhrasesFragment extends Fragment {
         mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         //Create list of words
         final ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("Where are you going", "minto wuksus", R.raw.phrase_where_are_you_going));
-        words.add(new Word("What is your name?", "tinnә oyaase'nә", R.raw.phrase_what_is_your_name));
-        words.add(new Word("My name is...", "oyaaset...", R.raw.phrase_my_name_is));
-        words.add(new Word("How are you feeling?", "michәksәs", R.raw.phrase_how_are_you_feeling));
-        words.add(new Word("I’m feeling good.", "kuchi achit", R.raw.phrase_im_feeling_good));
-        words.add(new Word("Are you coming?", "әәnәs'aa?", R.raw.phrase_are_you_coming));
-        words.add(new Word("Yes, I'm coming", "hәә’ әәnәm", R.raw.phrase_yes_im_coming));
-        words.add(new Word("I’m coming.", "әәnәm", R.raw.phrase_im_coming));
-        words.add(new Word("Let’s go.", "yoowutis", R.raw.phrase_lets_go));
-        words.add(new Word("Come here.", "әnni'nem", R.raw.phrase_come_here));
+        words.add(new Word(R.string.where_are_you_going, R.string.minto_wuksus, R.raw.phrase_where_are_you_going));
+        words.add(new Word(R.string.what_is_your_name, R.string.tinnә_oyaase_nә, R.raw.phrase_what_is_your_name));
+        words.add(new Word(R.string.my_name_is, R.string.oyaaset, R.raw.phrase_my_name_is));
+        words.add(new Word(R.string.how_are_you_feeling, R.string.michәksәs, R.raw.phrase_how_are_you_feeling));
+        words.add(new Word(R.string.im_feeling_good, R.string.kuchi_achit, R.raw.phrase_im_feeling_good));
+        words.add(new Word(R.string.are_you_coming, R.string.eenesaa, R.raw.phrase_are_you_coming));
+        words.add(new Word(R.string.yes_im_coming, R.string.hee_eenem, R.raw.phrase_yes_im_coming));
+        words.add(new Word(R.string.im_coming, R.string.eenem, R.raw.phrase_im_coming));
+        words.add(new Word(R.string.lets_go, R.string.yoowutis, R.raw.phrase_lets_go));
+        words.add(new Word(R.string.come_here, R.string.enni_nem, R.raw.phrase_come_here));
         //Create an {@link ArrayAdapter}, whose data source is a list of String.
         //adapter knows how to create layouts for each item in this list, using the
         //simple_list_item_1.xml layout resource defined in the Android framework.

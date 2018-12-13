@@ -33,14 +33,14 @@
         <activity android:name=".NumbersActivity"
             android:label="@string/category_numbers"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".FamilyMembers"
+        <activity android:name=".FamilyMembersActivity"
             android:label="@string/category_family"
             android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Colors"
+        <activity android:name=".ColorsActivity"
             android:label="@string/category_colors"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".Phrases"
+            android:name=".PhrasesActivity"
             android:label="@string/category_phrases"
             android:parentActivityName=".MainActivity" />
     </application>

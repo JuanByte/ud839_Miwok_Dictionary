@@ -70,16 +70,16 @@ public class NumbersFragment extends Fragment {
         mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
         //Create list of words
         final ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("one", "lutti", R.drawable.number_one, R.raw.number_one));
-        words.add(new Word("two", "otiiko", R.drawable.number_two, R.raw.number_two));
-        words.add(new Word("three", "tolookosu", R.drawable.number_three, R.raw.number_three));
-        words.add(new Word("four", "oyyisa", R.drawable.number_four, R.raw.number_four));
-        words.add(new Word("five", "massokka", R.drawable.number_five, R.raw.number_five));
-        words.add(new Word("six", "temmokka", R.drawable.number_six, R.raw.number_six));
-        words.add(new Word("seven", "kenekaku", R.drawable.number_seven, R.raw.number_seven));
-        words.add(new Word("eight", "kawinta", R.drawable.number_eight, R.raw.number_eight));
-        words.add(new Word("night", "wo'e", R.drawable.number_nine, R.raw.number_nine));
-        words.add(new Word("ten", "na'aacha", R.drawable.number_ten, R.raw.number_ten));
+        words.add(new Word(R.string.one, R.string.lutti, R.drawable.number_one, R.raw.number_one));
+        words.add(new Word(R.string.two, R.string.otiiko, R.drawable.number_two, R.raw.number_two));
+        words.add(new Word(R.string.three, R.string.tolookosu, R.drawable.number_three, R.raw.number_three));
+        words.add(new Word(R.string.four, R.string.oyyisa, R.drawable.number_four, R.raw.number_four));
+        words.add(new Word(R.string.five, R.string.massokka, R.drawable.number_five, R.raw.number_five));
+        words.add(new Word(R.string.six, R.string.temmokka, R.drawable.number_six, R.raw.number_six));
+        words.add(new Word(R.string.seven, R.string.kenekaku, R.drawable.number_seven, R.raw.number_seven));
+        words.add(new Word(R.string.eight, R.string.kawinta, R.drawable.number_eight, R.raw.number_eight));
+        words.add(new Word(R.string.nine, R.string.woe, R.drawable.number_nine, R.raw.number_nine));
+        words.add(new Word(R.string.ten, R.string.naaacha, R.drawable.number_ten, R.raw.number_ten));
         //Create an {@link ArrayAdapter}, whose data source is a list of String.
         //adapter knows how to create layouts for each item in this list, using the
         //simple_list_item_1.xml layout resource defined in the Android framework.
